@@ -21,7 +21,10 @@ export const Square = (props) => {
 
   return (
     <>
-      <StyledSquareIcon type={props.type}></StyledSquareIcon>
+      <StyledSquareIcon
+        onClick={props.handleClick}
+        type={props.type}
+      ></StyledSquareIcon>
     </>
   );
 };
