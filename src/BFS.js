@@ -1,10 +1,14 @@
-function BFS(src, dest, isValid) {
+function BFS(src, dest, isValid, dims) {
   var breakWhile;
   var d = [
     { x: -1, y: 0 },
     { x: 0, y: 1 },
     { x: 1, y: 0 },
     { x: 0, y: -1 },
+    // { x: 1, y: 1 },
+    // { x: -1, y: -1 },
+    // { x: 1, y: -1 },
+    // { x: -1, y: 1 },
   ];
   let queue = [];
   console.log('BFS');
@@ -13,22 +17,23 @@ function BFS(src, dest, isValid) {
   // console.log('src', src);
 
   let arr = [];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < dims.m; i++) {
     let temp = [];
-    for (let j = 0; j < 50; j++) {
+    for (let j = 0; j < dims.n; j++) {
       temp.push({ x: -1, y: -1 });
     }
     arr.push(temp);
   }
   var path = arr;
-  console.log(queue);
+  // console.log(queue);
   let ctr = 0;
   while (queue.length !== 0) {
     // queue.forEach((ele) => {
     //   console.log(ele);
     // });
-    console.log(queue, ++ctr);
+    // console.log(queue, ++ctr);
     // console.log(queue.length);
+    // console.log(path);
     let a = queue.shift();
     d.forEach((dir) => {
       // console.log(a);

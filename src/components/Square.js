@@ -7,7 +7,15 @@ const StyledSquareIcon = styled.div`
   width: 1.3rem;
   border: 1px solid black;
   background: ${(props) =>
-    props.type === 0 ? 'white' : props.type === 1 ? 'green' : 'brown'};
+    props.type === 0
+      ? 'white'
+      : props.type === 1
+      ? 'green'
+      : props.type === 3
+      ? 'cyan'
+      : props.type === 5
+      ? 'black'
+      : 'brown'};
   &:hover {
     background: red;
   }
