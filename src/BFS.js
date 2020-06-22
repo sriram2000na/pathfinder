@@ -5,13 +5,13 @@ function BFS(src, dest, isValid, dims) {
     { x: 0, y: 1 },
     { x: 1, y: 0 },
     { x: 0, y: -1 },
-    // { x: 1, y: 1 },
-    // { x: -1, y: -1 },
-    // { x: 1, y: -1 },
-    // { x: -1, y: 1 },
+    { x: 1, y: 1 },
+    { x: -1, y: -1 },
+    { x: 1, y: -1 },
+    { x: -1, y: 1 },
   ];
   let queue = [];
-  console.log('BFS');
+  // console.log('BFS');
   // console.log('before', queue);
   queue.push(src);
   // console.log('src', src);
@@ -26,7 +26,7 @@ function BFS(src, dest, isValid, dims) {
   }
   var path = arr;
   // console.log(queue);
-  let ctr = 0;
+  // let ctr = 0;
   while (queue.length !== 0) {
     // queue.forEach((ele) => {
     //   console.log(ele);
@@ -67,9 +67,10 @@ function BFS(src, dest, isValid, dims) {
       // return false;
     });
     if (breakWhile) {
-      console.log(queue);
+      // console.log(path);
       return path;
     }
   }
+  return false;
 }
 export default BFS;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 const StyledSquareIcon = styled.div`
   display: inline-block;
@@ -21,12 +21,6 @@ const StyledSquareIcon = styled.div`
   }
 `;
 export const Square = (props) => {
-  const [State, setState] = useState({
-    isActive: false,
-    visited: false,
-    neighbours: [],
-  });
-
   return (
     <>
       <StyledSquareIcon
