@@ -1,4 +1,4 @@
-function BFS(src, dest, isValid, dims) {
+function BFS(src, dest, isValid, dims, horse) {
   var breakWhile;
   var d = [
     { x: -1, y: 0 },
@@ -10,6 +10,18 @@ function BFS(src, dest, isValid, dims) {
     { x: 1, y: -1 },
     { x: -1, y: 1 },
   ];
+  if (horse) {
+    d = [
+      { x: 2, y: 1 },
+      { x: 2, y: -1 },
+      { x: -2, y: 1 },
+      { x: -2, y: -1 },
+      { x: 1, y: 2 },
+      { x: -1, y: 2 },
+      { x: 1, y: -2 },
+      { x: -1, y: -2 },
+    ];
+  }
   let queue = [];
   // console.log('BFS');
   // console.log('before', queue);

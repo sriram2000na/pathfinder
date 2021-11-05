@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Square } from './Square';
-import BFS from '../BFS.js';
+import React, { useState, useEffect } from "react";
+import { Square } from "./Square";
+import BFS from "../BFS.js";
 export const Grid = () => {
   var p;
+  const [horse, setHorse] = useState(false);
   const [dims, setdims] = useState({
-    m: 3,
-    n: 3,
+    m: 20,
+    n: 20,
     src: { x: -1, y: -1 },
     dest: { x: -1, y: -1 },
     wall: false,
     path: undefined,
     arr: [[]],
   });
+  const toggleHorse = () => {
+    setHorse(!horse);
+  };
   useEffect(() => {
     // console.log('here');
     let arr = [];
@@ -35,7 +39,7 @@ export const Grid = () => {
     // console.log('wall', dims.wall);
     if (dims.wall) {
       let arr2 = [...arr];
-      arr2[idx][eidx] = 'wall';
+      arr2[idx][eidx] = "wall";
       // console.log(arr2);
       setdims({ ...dims, arr: arr2 });
       return;
@@ -47,9 +51,9 @@ export const Grid = () => {
         // console.log(isValid(idx, eidx));
       } else {
         var arr2 = [];
-        p = BFS(dims.src, dims.dest, isValid, { m: dims.m, n: dims.n });
+        p = BFS(dims.src, dims.dest, isValid, { m: dims.m, n: dims.n }, horse);
         if (p === false) {
-          console.log('cant find path');
+          console.log("cant find path");
           setdims({ ...dims, path: false });
           return;
         }
@@ -84,12 +88,12 @@ export const Grid = () => {
       idx < dims.m &&
       eidx >= 0 &&
       eidx < dims.n &&
-      dims.arr[idx][eidx] !== 'wall'
+      dims.arr[idx][eidx] !== "wall"
     );
   };
   const setType = (idx, eidx) => {
     // console.log(arr);
-    if (arr[idx][eidx] === 'wall') {
+    if (arr[idx][eidx] === "wall") {
       return 5;
     }
     if (dims.src.x === idx && dims.src.y === eidx) {
@@ -122,10 +126,10 @@ export const Grid = () => {
     <>
       <div
         style={{
-          display: 'grid',
+          display: "grid",
           gridTemplateColumns: `repeat(${dims.n},1fr)`,
-          gridColumnGap: '0',
-          gridGap: '0',
+          gridColumnGap: "0",
+          gridGap: "0",
           width: `${dims.n * 1.3}rem`,
         }}
       >
@@ -142,8 +146,9 @@ export const Grid = () => {
           });
         })}
       </div>
-      <div>{dims.path === false && 'Path Not Found'}</div>
+      <div>{dims.path === false && "Path Not Found"}</div>
       <button onClick={setWalls}>Toggle Walls</button>
+      <button onClick={toggleHorse}>HorseMode</button>
     </>
   );
 };
